@@ -20,6 +20,9 @@ console.log("num of elements in the array: " + todos.length);
 
 // getting the last element of the array
 console.log("last thing to do: " + todos[todos.length-1]);
+// In JavaScript, array indices must be non-negative integers. Attempting to access an array element with a negative index (e.g., todos[-1]) will not retrieve elements from the end of the array as it might in some other languages or frameworks (such as Python). Instead, it will look for a property with the key -1, which usually does not exist, and will return undefined.
+console.log("todos[-1] - " + todos[-1]);
+console.log("todos[1] - " + todos[1]);
 
 // slice() method slices up part of an existing array into a new array
 // slice() creates a new array
@@ -34,3 +37,31 @@ console.log(todos.slice());
 // todos.shift();
 
 console.log(todos);
+
+// CHECK ELEMENT EXISTANCE IN ARRAYS
+
+const temperatures = [69, 82, 73, 64];
+
+// indexOf() finds an index of an element
+console.log("temperatures.indexOf(82) - " + temperatures.indexOf(82));
+// if an element doesn't exist, indexOf returns -1
+console.log("temperatures.indexOf(50) - " + temperatures.indexOf(50));
+
+// checking if element is in the array using indexOf()
+console.log("temperatures.indexOf(50) > -1 - " + (temperatures.indexOf(50) > -1));
+// checking if element is in the arrays using includes()
+// includes() works with arrays whose elements are primitive values eg strings, numbers,boolenas
+console.log("temperatures.includes(50) - " + temperatures.includes(50));
+
+// to check an array of objects and see if one or more elements meets a given condition, we can use the method some()
+const temperatures2 = [
+    {degrees: 69, isRecordTemp: false},
+    {degrees: 82, isRecordTemp: true},
+    {degrees: 73, isRecordTemp: false},
+    {degrees: 64, isRecordTemp: false}
+];
+
+// some() works by passing it a function
+// at least 1 element needs to match condition we provided for it to return true (then it stops iterating)
+const hasRecordTemp = temperatures.some(temperature => temperature.isRecordTemp === true);
+console.log(hasRecordTemp);
