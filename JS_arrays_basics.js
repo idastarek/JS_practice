@@ -63,5 +63,5 @@ const temperatures2 = [
 
 // some() works by passing it a function
 // at least 1 element needs to match condition we provided for it to return true (then it stops iterating)
-const hasRecordTemp = temperatures.some(temperature => temperature.isRecordTemp === true);
+const hasRecordTemp = temperatures2.some(temperature => temperature.isRecordTemp === true);
 console.log(hasRecordTemp);
