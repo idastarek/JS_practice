@@ -65,3 +65,35 @@ const temperatures2 = [
 // at least 1 element needs to match condition we provided for it to return true (then it stops iterating)
 const hasRecordTemp = temperatures2.some(temperature => temperature.isRecordTemp === true);
 console.log(hasRecordTemp);
+
+// every() checks if the condition is true for every element in the array
+const result = temperatures2.every(temperature => temperature.isRecordTemp);
+console.log(result);
+
+
+//PERFORM ACTIONS ON ALL ELEMENTS
+
+// map() allows us to transform each element of the array
+// the result is a new array - it doesn't mutate the old one
+
+const newTemps = temperatures2.map(temperature => {
+    temperature.isRecordTemp = true;
+    return temperature;
+})
+
+console.log(newTemps);
+
+// besides modyfying existing array properties, we can add entirely new ones
+const newTemps2 = temperatures2.map(temperature => {
+    temperature.isHigh = true;
+    return temperature;
+});
+
+console.log(newTemps2);
+
+// mapping over an array based on a condition
+const newTemps3 = temperatures2.map(temperature => 
+    temperature.degrees > 70 ? {...temperature.isHigh = true} : temperature
+);
+    
+console.log(newTemps3);
