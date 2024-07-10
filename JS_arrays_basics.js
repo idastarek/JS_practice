@@ -71,29 +71,58 @@ const result = temperatures2.every(temperature => temperature.isRecordTemp);
 console.log(result);
 
 
+
 //PERFORM ACTIONS ON ALL ELEMENTS
 
 // map() allows us to transform each element of the array
 // the result is a new array - it doesn't mutate the old one
 
 const newTemps = temperatures2.map(temperature => {
-    temperature.isRecordTemp = true;
-    return temperature;
-})
+    return {...temperature, isRecordTemp: true};
+});
 
 console.log(newTemps);
 
 // besides modyfying existing array properties, we can add entirely new ones
 const newTemps2 = temperatures2.map(temperature => {
-    temperature.isHigh = true;
-    return temperature;
+    return {...temperature, isHigh: true};
 });
 
 console.log(newTemps2);
 
 // mapping over an array based on a condition
+// ... - creates a new object instead of modyfying the existing one
 const newTemps3 = temperatures2.map(temperature => 
-    temperature.degrees > 70 ? {...temperature.isHigh = true} : temperature
+    temperature.degrees > 70 ? {...temperature, isHigh: true} : temperature
 );
     
 console.log(newTemps3);
+
+// forEach method works in a very similar way to map(), but it doesn't create new arrays
+
+newTemps3.forEach(temperature =>{
+    if (temperature.isHigh){
+        console.log(`Temperature ${temperature.degrees} was a record high last week!`);
+    }
+}); 
+
+// a great thing about methods which return new arrays is that we can chain them, but use it wisely, as it can also make your code harder to read
+// immediately after mapping over the array, we can pass the newly created array to forEach()
+temperatures.map(temperature => 
+temperature.degrees > 70 ? { ...temperature, isHigh: true } : temperature 
+).forEach(temperature => {
+   if (temperature.isHigh) {
+     console.log(`Temperature ${temperature.degrees} was a record high last week!`);  
+   }
+});
+
+// and here formatted
+temperatures
+  .map(temperature => 
+temperature.degrees > 70 ? { ...temperature, isHigh: true } : temperature 
+)
+  .forEach(temperature => {
+   if (temperature.isHigh) {
+     console.log(`Temperature ${temperature.degrees} was a record high last week!`);  
+   }
+});
