@@ -86,4 +86,10 @@ const numbers = [1, 2, 3, 4, 5, 6];
  
  console.log(number_doubled2);
 
- 
+ // return only numbers > 3 using .reduce()
+ const numsGreater = numbers.reduce((acc, num) => {
+    num > 3 ? acc.push(num) : acc
+    return acc
+}, []);
+
+console.log(numsGreater);
