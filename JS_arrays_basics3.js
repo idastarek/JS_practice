@@ -104,3 +104,50 @@ const [first, second] = finalMenuItems2;
 // to more easiy see the name of the variable that we're logging, as well as its respected value, we can use the object shorthand syntax
 
 console.log({ first }, { second });
+
+// we can also use destructuring to swap values between two variables
+// const [second, first] = [first, second];
+
+// // a destructuring statement doesn't require a variable declaration on the same line (could be just [second, first]=[first, second]), however, since we originally declared first and second as const variables, we can't reassign them due to the nature of const
+
+// let [first, second] = finalMenuItems3;
+// console.log("before", {first}, {second});
+// [second, first] = [first, second];
+// console.log("after", {first}, {second});
+
+//---
+
+const iceCreamFlavours = [
+    "Lemon",
+    "Vanilla",
+    "Chocolate"
+]
+
+const [winner, ...losers] = iceCreamFlavours;
+// winner - the first value of the array
+// ... - get the rest of the values
+// losers - name the array for them
+
+console.log({winner, losers});
+
+// ARRAY DESTRUCTURING
+
+const vehicles = ["mustang", "f-50", "expedition"];
+const [car, truck, suv] = vehicles;
+
+// when destructuring ararys, the order that variables are delcared is important
+// if we want only the car and the suv, we can simply leave out the truck but keep the comma
+
+// const [car, ,suv] = vehicles; 
+
+// destructuring comes in handy when a function returns an array
+
+function calculate(a, b) {
+    const add = a + b;
+    const subtract = a-b;
+    return [add, subtract];
+};
+
+const [add, subtract] = calculate(4, 7);
+
+console.log({add, subtract});
